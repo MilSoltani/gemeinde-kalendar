@@ -12,13 +12,14 @@ export const useFormStore = defineStore('form', () => {
     date: '',
     time: '',
     notes: '',
+    wholeDay: false,
   })
 
   const isEditing = computed(() => form.value.id !== null)
   const canSubmit = computed(() => {
     return !!form.value.title
       && !!form.value.date
-      && !!form.value.time
+      && (!!form.value.time || form.value.wholeDay)
   })
 
   const deleteMonth = ref('')
@@ -30,6 +31,7 @@ export const useFormStore = defineStore('form', () => {
       date: '',
       time: '',
       notes: '',
+      wholeDay: false,
     }
   }
 
@@ -56,6 +58,7 @@ export const useFormStore = defineStore('form', () => {
       date: form.value.date,
       time: form.value.time,
       notes: form.value.notes,
+      wholeDay: form.value.wholeDay,
     })
 
     resetForm()

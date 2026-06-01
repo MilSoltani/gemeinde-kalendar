@@ -4,6 +4,7 @@ export interface EventItem {
   date: string
   time: string
   notes?: string
+  wholeDay: boolean
 }
 
 export interface Month {

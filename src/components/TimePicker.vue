@@ -22,7 +22,7 @@ watch([hour, minute], () => {
 </script>
 
 <template>
-  <div>
+  <div class="container">
     <select v-model="hour">
       <option v-for="h in 24" :key="h - 1" :value="String(h - 1).padStart(2, '0')">
         {{ String(h - 1).padStart(2, '0') }}

@@ -58,12 +58,29 @@ function printCalendar() {
           placeholder="Titel"
         >
 
-        <input
-          v-model="formStore.form.date"
-          type="date"
-        >
+        <div>
+          <input
+            v-model="formStore.form.date"
+            type="date"
+          >
+        </div>
 
-        <TimePicker v-model="formStore.form.time" />
+        <div class="checkbox-group">
+          <input
+            id="wholeDay"
+            v-model="formStore.form.wholeDay"
+            type="checkbox"
+          >
+
+          <label for="wholeDay">Ganzer Tag</label>
+        </div>
+
+        <div class="time-selector">
+          <TimePicker
+            v-if="!formStore.form.wholeDay"
+            v-model="formStore.form.time"
+          />
+        </div>
 
         <textarea
           v-model="formStore.form.notes"
@@ -157,6 +174,17 @@ textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   resize: vertical;
+}
+
+.checkbox-group {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  font-family: inherit;
+}
+
+.time-selector {
+  height: 20px;
 }
 
 @media print {

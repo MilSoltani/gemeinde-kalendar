@@ -66,13 +66,13 @@ function isDateSelected(date: string) {
           >
             <span class="event-title">
               <span
-                v-if="event.time"
+                v-if="event.time && !event.wholeDay"
                 class="event-time"
               >
                 {{ event.time }}
               </span>
 
-              {{ event.title }}
+              <span :class="{ 'whole-day': event.wholeDay }">{{ event.title }}</span>
 
               <span
                 v-if="eventsStore.getEventNoteMarker(event.notes, props.month.year, props.month.month)"
@@ -215,9 +215,20 @@ function isDateSelected(date: string) {
   opacity: 0.9;
 }
 
+.whole-day {
+  flex-shrink: 0;
+  margin-right: 3px;
+  padding: 1px 3px 2px;
+  border-radius: var(--radius-sm);
+  background: #ddd;
+  color: var(--color-text);
+  font-size: var(--font-size-event-time);
+  font-weight: 700;
+  opacity: 0.9;
+}
+
 .event-title {
   flex: 1;
-
   font-size: var(--font-size-event);
 }
 

@@ -50,13 +50,14 @@ export const useEventsStore = defineStore('events', () => {
     )
   }
 
-  function createEventFromForm(formData: { title: string, date: string, time: string, notes: string }) {
+  function createEventFromForm(formData: { title: string, date: string, time: string, notes: string, wholeDay: boolean }) {
     const newEvent: EventItem = {
       id: Date.now(),
       title: formData.title,
       date: formData.date,
       time: formData.time,
       notes: formData.notes,
+      wholeDay: formData.wholeDay,
     }
     addEvent(newEvent)
   }

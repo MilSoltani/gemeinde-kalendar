@@ -14,9 +14,19 @@ const formStore = useFormStore()
 const weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 
 function selectDay(day: any) {
-  if (!day.empty) {
+  if (!day.empty && day.events.length === 0) {
+    formStore.form.date = day.date
+    formStore.showModal = true
+  }
+  else if (!day.empty) {
     formStore.form.date = day.date
   }
+}
+
+function handleEventClick(event: any, dayDate: string) {
+  formStore.form.date = dayDate
+  formStore.selectEvent(event)
+  formStore.showModal = true
 }
 
 function isDateSelected(date: string) {
@@ -62,7 +72,7 @@ function isDateSelected(date: string) {
             v-for="event in day.events"
             :key="event.id"
             class="event"
-            @click.stop="formStore.selectEvent(event)"
+            @click.stop="handleEventClick(event, day.date)"
           >
             <span class="event-title">
               <span

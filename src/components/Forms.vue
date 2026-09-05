@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { useCalendarStore } from '@/stores/useCalendarStore'
-import { useFormStore } from '@/stores/useFormStore'
-import TimePicker from './TimePicker.vue'
 
 const calendarStore = useCalendarStore()
-const formStore = useFormStore()
 
 function printCalendar() {
   window.print()
@@ -42,89 +39,6 @@ function printCalendar() {
 
         <button @click="printCalendar">
           Drucken / PDF speichern
-        </button>
-      </div>
-    </div>
-
-    <div class="crud-column">
-      <h4>
-        {{ formStore.isEditing ? 'Termin bearbeiten' : 'Termine hinzufügen' }}:
-      </h4>
-
-      <div class="form">
-        <input
-          v-model="formStore.form.title"
-          type="text"
-          placeholder="Titel"
-        >
-
-        <div>
-          <input
-            v-model="formStore.form.date"
-            type="date"
-          >
-        </div>
-
-        <div class="checkbox-group">
-          <input
-            id="wholeDay"
-            v-model="formStore.form.wholeDay"
-            type="checkbox"
-          >
-
-          <label for="wholeDay">Ganzer Tag</label>
-        </div>
-
-        <div class="time-selector">
-          <TimePicker
-            v-if="!formStore.form.wholeDay"
-            v-model="formStore.form.time"
-          />
-        </div>
-
-        <textarea
-          v-model="formStore.form.notes"
-          placeholder="Notizen (optional)"
-          rows="3"
-        />
-
-        <div class="buttons">
-          <button
-            v-if="!formStore.isEditing"
-            :disabled="!formStore.canSubmit"
-            @click="formStore.addEvent"
-          >
-            Hinzufügen
-          </button>
-
-          <template v-else>
-            <button :disabled="!formStore.canSubmit" @click="formStore.updateEvent">
-              Aktualisieren
-            </button>
-
-            <button @click="formStore.deleteEvent">
-              Löschen
-            </button>
-
-            <button @click="formStore.resetForm">
-              Abbrechen
-            </button>
-          </template>
-        </div>
-      </div>
-    </div>
-
-    <div class="crud-column">
-      <h4>Monatstermine löschen</h4>
-
-      <div class="form">
-        <input
-          v-model="formStore.deleteMonth"
-          type="month"
-        >
-
-        <button @click="formStore.removeMonthEvents">
-          Alle Termine des Monats löschen
         </button>
       </div>
     </div>

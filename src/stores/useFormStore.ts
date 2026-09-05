@@ -23,6 +23,7 @@ export const useFormStore = defineStore('form', () => {
   })
 
   const deleteMonth = ref('')
+  const showModal = ref(false)
 
   function resetForm() {
     form.value = {
@@ -86,6 +87,7 @@ export const useFormStore = defineStore('form', () => {
     form,
     isEditing,
     deleteMonth,
+    showModal,
     resetForm,
     addEvent,
     selectEvent,

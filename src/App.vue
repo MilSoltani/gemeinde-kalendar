@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Calendar from './components/Calendar.vue'
+import EventModal from './components/EventModal.vue'
 import Forms from './components/Forms.vue'
 import HelpDialog from './components/HelpDialog.vue'
 import Notes from './components/Notes.vue'
@@ -23,6 +24,7 @@ const calendarStore = useCalendarStore()
   </div>
 
   <HelpDialog />
+  <EventModal />
 </template>
 
 <style scoped>

@@ -57,7 +57,7 @@ export const useCalendarStore = defineStore('calendar', () => {
     const daysInMonth = lastDay.getDate()
     const startDay = firstDay.getDay()
 
-    const totalCells = 42
+    const totalCells = Math.ceil((daysInMonth + startDay) / 7) * 7
 
     const days: any[] = []
 

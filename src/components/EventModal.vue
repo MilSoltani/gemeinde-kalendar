@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from 'vue'
 import { useFormStore } from '@/stores/useFormStore'
 import TimePicker from './TimePicker.vue'
 
@@ -8,6 +9,15 @@ function closeModal() {
   formStore.showModal = false
   formStore.resetForm()
 }
+
+function handleKeydown(event: KeyboardEvent) {
+  if (event.key === 'Escape') {
+    closeModal()
+  }
+}
+
+onMounted(() => window.addEventListener('keydown', handleKeydown))
+onUnmounted(() => window.removeEventListener('keydown', handleKeydown))
 
 function handleSubmit() {
   if (formStore.canSubmit) {

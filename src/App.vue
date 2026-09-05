@@ -2,7 +2,6 @@
 import Calendar from './components/Calendar.vue'
 import EventModal from './components/EventModal.vue'
 import Forms from './components/Forms.vue'
-import HelpDialog from './components/HelpDialog.vue'
 import Notes from './components/Notes.vue'
 import { useCalendarStore } from './stores/useCalendarStore'
 
@@ -23,7 +22,6 @@ const calendarStore = useCalendarStore()
     </section>
   </div>
 
-  <HelpDialog />
   <EventModal />
 </template>
 

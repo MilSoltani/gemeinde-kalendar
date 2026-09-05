@@ -14,12 +14,10 @@ const formStore = useFormStore()
 const weekdays = ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag']
 
 function selectDay(day: any) {
-  if (!day.empty && day.events.length === 0) {
+  if (!day.empty) {
+    formStore.resetForm()
     formStore.form.date = day.date
     formStore.showModal = true
-  }
-  else if (!day.empty) {
-    formStore.form.date = day.date
   }
 }
 
